@@ -1,9 +1,40 @@
-.body{
+/* Estilo general del fondo y centrar contenido */
+.body {
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: azure;
-}
+    background: #f5f5f5; /* color de fondo suave */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Contenedor del formulario de login */
+  .login {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Título del formulario */
+  .login h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  /* Asegura que todos los inputs y botones ocupen el ancho completo */
+  .ancho {
+    width: 100%;
+    margin-bottom: 1.2rem;
+  }
+  
+  /* Espacio adicional para el botón si se desea */
+  button[type="submit"] {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
