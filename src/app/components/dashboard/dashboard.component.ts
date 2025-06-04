@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { HeadComponent } from "../share/head/head.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +9,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   imports: [
     NavbarComponent,
     RouterOutlet,
-    RouterLink,
-  ],
+    HeadComponent
+],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })

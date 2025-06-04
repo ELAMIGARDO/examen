@@ -3,14 +3,20 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ClientesComponent } from './components/dashboard/clientes/clientes.component';
 import { EmpleadosComponent } from './components/dashboard/empleados/empleados.component';
 import { ReportesComponent } from './components/dashboard/reportes/reportes.component';
+import { ProductosComponent } from './components/dashboard/productos/productos.component';
+import { LoginComponent } from './components/dashboard/login/login.component';
 
 export const routes: Routes = [
-    {path: '',component: DashboardComponent}, 
-    {path: '',redirectTo: '/home',pathMatch: 'full'} ,
-    {path: 'dashboard',component: DashboardComponent,children:[
-        {path: 'dashboard', component:DashboardComponent},
-        {path: 'clientes', component: ClientesComponent},
-        {path: 'empleados', component: EmpleadosComponent},
-        {path: 'reportes', component: ReportesComponent},  
-        ]}
-];
+    {path: '', component: LoginComponent},  // Página inicial: login
+    {path: 'dashboard',component: DashboardComponent, children: [
+        { path: '', redirectTo: 'clientes', pathMatch: 'full' }, // ruta por defecto dentro del dashboard
+        { path: 'clientes', component: ClientesComponent },
+        { path: 'empleados', component: EmpleadosComponent },
+        { path: 'productos', component: ProductosComponent },
+        { path: 'reportes', component: ReportesComponent },
+        {path:  'login', component: LoginComponent},
+      ],
+    },
+  
+    { path: '**', redirectTo: '' }  // Cualquier ruta desconocida redirige al login
+  ];

@@ -1,41 +1,44 @@
 import { Component } from '@angular/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    MatSlideToggleModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-  ], 
+  standalone: true, 
   templateUrl: './login.component.html',
-  
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ]
 })
 export class LoginComponent {
-  form:FormGroup;
-  
-  constructor(private formBuilder:FormBuilder){
-    this.form=this.formBuilder.group({
-      email:['',Validators.required],
-      password: ['',Validators.required]
-    })
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
   }
 
-  login(){
-    console.log(this.form.value);
-    console.log(this.form.status);
-    console.log(this.form.controls['email'].value);
-    console.log(this.form.controls['password'].value);
-    console.log(this.form.controls['email'].errors);
-    console.log(this.form.controls['password'].errors);    
-    console.log(this.form)
-  }
+  login(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
+    const { email, password } = this.form.value;
+
+    if (email === 'admin@admin.com' && password === '1234') {
+      localStorage.setItem('token', 'true');
+      this.router.navigate(['/dashboard']);
+    } else {
+      alert('Credenciales incorrectas');
+    }
+  }
 }
