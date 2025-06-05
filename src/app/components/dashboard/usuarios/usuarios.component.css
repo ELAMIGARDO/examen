@@ -1,0 +1,13 @@
+/* src/app/components/dashboard/usuarios/usuarios.component.css */
+.usuarios-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .usuario-card {
+    width: 300px;
+    margin: 16px;
+  }
+  
